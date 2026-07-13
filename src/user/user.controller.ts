@@ -23,7 +23,6 @@ import { RolesGuard } from "@auth/guards/role.guard";
 import { Role } from "@prisma/client";
 import {
   ApiBearerAuth,
-  ApiExcludeEndpoint,
   ApiOperation,
   ApiParam,
   ApiResponse,
@@ -38,7 +37,6 @@ import { CreateUserDto, EditUserDto, FindAllQueryDto } from "./dto";
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @ApiExcludeEndpoint()
   @ApiBearerAuth()
   @UseGuards(RolesGuard)
   @Roles(Role.USER)
